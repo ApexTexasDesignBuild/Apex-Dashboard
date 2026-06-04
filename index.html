@@ -96,10 +96,10 @@ td:last-child{border-right:none}
 .price-text{font-size:12px;font-weight:600;color:#166534;font-family:'DM Mono',monospace;text-align:right;display:block}
 
 .badge{display:inline-block;font-size:10px;font-weight:600;padding:2px 7px;border-radius:99px;border:1px solid}
-.b-approved{background:var(--green-bg);color:var(--green-text);border-color:var(--green-border)}
-.b-pending{background:var(--amber-bg);color:var(--amber-text);border-color:var(--amber-border)}
-.b-created{background:var(--sky-bg);color:var(--sky-text);border-color:var(--sky-border)}
-.b-paid{background:var(--emerald-bg);color:var(--emerald-text);border-color:#6EE7B7}
+.b-approved{background:#FFF7ED;color:#C2410C;border-color:#FDBA74}
+.b-pending{background:#EFF6FF;color:#1D4ED8;border-color:#93C5FD}
+.b-created{background:#F3F4F6;color:#374151;border-color:#D1D5DB}
+.b-paid{background:#DCFCE7;color:#166534;border-color:#86EFAC}
 .empty-row td{text-align:center;padding:2.5rem;color:var(--gray-400);font-size:13px}
 
 .footer{font-size:11px;color:var(--gray-400);margin-top:10px;padding-bottom:24px;display:flex;justify-content:space-between}
@@ -161,19 +161,19 @@ td:last-child{border-right:none}
 <div id="mainScreen" class="main" style="display:none">
   <div class="stats-row">
     <div class="stat-card"><div class="stat-label">Total Jobs</div><div class="stat-val" id="sTotal">—</div></div>
-    <div class="stat-card"><div class="stat-label">Approved</div><div class="stat-val" id="sApproved">—</div></div>
-    <div class="stat-card"><div class="stat-label">Pending</div><div class="stat-val" id="sPending">—</div></div>
-    <div class="stat-card"><div class="stat-label">In Progress</div><div class="stat-val" id="sCreated">—</div></div>
+    <div class="stat-card"><div class="stat-label">Construction</div><div class="stat-val" id="sApproved">—</div></div>
+    <div class="stat-card"><div class="stat-label">Estimating</div><div class="stat-val" id="sPending">—</div></div>
+    <div class="stat-card"><div class="stat-label">Lead</div><div class="stat-val" id="sCreated">—</div></div>
     <div class="stat-card"><div class="stat-label">Total Contract</div><div class="stat-val green" id="sValue">—</div></div>
   </div>
   <div class="toolbar">
     <input type="text" id="searchInput" placeholder="🔍  Search address, client, or job #..." oninput="renderTable()">
     <select id="statusFilter" onchange="renderTable()">
       <option value="">All statuses</option>
-      <option value="approved">Approved</option>
-      <option value="pending">Pending</option>
-      <option value="created">Created</option>
-      <option value="paid">Paid</option>
+      <option value="created">Lead</option>
+      <option value="pending">Estimating</option>
+      <option value="approved">Construction</option>
+      <option value="paid">Completed</option>
     </select>
     <span class="count-tag" id="countTag"></span>
   </div>
@@ -370,9 +370,15 @@ function updateStats() {
   document.getElementById('sValue').textContent    = total > 0 ? '$'+Math.round(total/1000)+'k' : '—';
 }
 
+const STATUS_LABELS = {
+  created:  { label: 'Lead',        cls: 'b-created'  },
+  pending:  { label: 'Estimating',  cls: 'b-pending'  },
+  approved: { label: 'Construction',cls: 'b-approved' },
+  paid:     { label: 'Completed',   cls: 'b-paid'     },
+};
 function badge(s) {
-  const m={approved:'b-approved',pending:'b-pending',created:'b-created',paid:'b-paid'};
-  return `<span class="badge ${m[s]||'b-created'}">${s}</span>`;
+  const st = STATUS_LABELS[s] || { label: s, cls: 'b-created' };
+  return `<span class="badge ${st.cls}">${st.label}</span>`;
 }
 function fmt(n) { return n ? '$'+Math.round(n).toLocaleString() : '—'; }
 
