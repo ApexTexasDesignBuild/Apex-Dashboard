@@ -351,36 +351,27 @@ async function saveOnsite(jobId, newValue, fieldValueId, rowIndex) {
   statusEl.className = 'save-status';
 
   try {
-    // If fieldValueId exists, update it; otherwise create it
-    let mutation;
-    if (fieldValueId) {
-      mutation = {
-        updateCustomFieldValue: {
-          $: { id: fieldValueId, value: newValue },
-          id: {}
-        }
-      };
-    } else {
-      mutation = {
-        createCustomFieldValue: {
-          $: { jobId: jobId, customFieldId: ONSITE_FIELD_ID, value: newValue },
-          id: {}
-        }
-      };
-    }
+    const customFieldValues = {};
+    customFieldValues[ONSITE_FIELD_ID] = newValue;
 
     const res = await fetch('https://api.jobtread.com/pave', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ mutation: { $: { grantKey: getKey() }, ...mutation } })
+      body: JSON.stringify({
+        query: {
+          $: { grantKey: getKey() },
+          updateJob: {
+            $: { id: jobId, customFieldValues: customFieldValues }
+          }
+        }
+      })
     });
     const data = await res.json();
     if (data.errors) throw new Error(data.errors[0]?.message || 'Save failed');
+    if (!data?.query?.updateJob && !data?.updateJob) throw new Error('Unexpected response from JobTread');
 
     // Update local data
     allJobs[rowIndex].onsite = newValue;
-    const newId = data?.mutation?.updateCustomFieldValue?.id || data?.mutation?.createCustomFieldValue?.id;
-    if (newId) allJobs[rowIndex].onsiteFieldValueId = newId;
 
     statusEl.textContent = '✓ Saved to JobTread';
     statusEl.className = 'save-status save-ok';
