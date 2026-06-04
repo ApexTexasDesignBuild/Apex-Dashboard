@@ -8,14 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --blue: #2563EB;
-  --blue-light: #EFF6FF;
-  --yellow: #FEF08A;
-  --yellow-dark: #CA8A04;
-  --green-bg: #DCFCE7; --green-text: #166534; --green-border: #86EFAC;
-  --amber-bg: #FEF3C7; --amber-text: #92400E; --amber-border: #FCD34D;
-  --sky-bg: #E0F2FE;   --sky-text: #0C4A6E;   --sky-border: #7DD3FC;
-  --emerald-bg: #D1FAE5; --emerald-text: #065F46;
+  --blue:#2563EB; --blue-light:#EFF6FF;
+  --yellow:#FEF08A; --yellow-dark:#CA8A04;
   --gray-50:#F9FAFB; --gray-100:#F3F4F6; --gray-200:#E5E7EB;
   --gray-300:#D1D5DB; --gray-400:#9CA3AF; --gray-500:#6B7280;
   --gray-600:#4B5563; --gray-700:#374151; --gray-900:#111827;
@@ -29,7 +23,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-100);color:var(--gra
 .topbar{background:var(--header-bg);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px;border-bottom:3px solid var(--blue)}
 .topbar-left{display:flex;align-items:center;gap:12px}
 .logo{width:32px;height:32px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center}
-.logo svg{width:18px;height:18px}
 .tb-title{font-size:15px;font-weight:600;color:white;letter-spacing:.02em}
 .tb-sub{font-size:11px;color:rgba(255,255,255,.45);margin-top:1px}
 .topbar-right{display:flex;align-items:center;gap:10px}
@@ -44,6 +37,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-100);color:var(--gra
 .settings-btn{background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);border-radius:var(--radius);padding:6px 10px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px}
 .settings-btn:hover{border-color:rgba(255,255,255,.4);color:white}
 
+/* SETUP */
 .setup-wrap{max-width:480px;margin:80px auto;padding:0 16px}
 .setup-card{background:white;border-radius:12px;padding:32px;box-shadow:var(--shadow-md);border:1px solid var(--gray-200)}
 .setup-card h2{font-size:18px;font-weight:600;margin-bottom:6px}
@@ -54,9 +48,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-100);color:var(--gra
 .btn-save{width:100%;background:var(--blue);color:white;border:none;border-radius:var(--radius);padding:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
 .btn-save:hover{background:#1D4ED8}
 .setup-hint{font-size:11.5px;color:var(--gray-400);margin-top:12px;line-height:1.5}
-.setup-hint a{color:var(--blue)}
 .err-banner{background:#FEF2F2;border:1px solid #FECACA;border-radius:var(--radius);padding:10px 14px;font-size:12.5px;color:#B91C1C;margin-bottom:14px;display:none}
 
+/* MAIN */
 .main{padding:20px 24px}
 .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:18px}
 .stat-card{background:white;border:1px solid var(--gray-200);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
@@ -70,6 +64,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-100);color:var(--gra
 .toolbar select{padding:8px 10px;border:1px solid var(--gray-300);border-radius:var(--radius);font-size:13px;font-family:'DM Sans',sans-serif;background:white;color:var(--gray-900);outline:none}
 .count-tag{font-size:12px;color:var(--gray-400);margin-left:auto;white-space:nowrap}
 
+/* TABLE */
 .tbl-card{background:white;border:1px solid var(--gray-200);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
 table{width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed}
 thead tr{background:#1E3A5F}
@@ -81,27 +76,44 @@ tbody tr:hover td{background:#F0F7FF !important}
 td{padding:9px 12px;vertical-align:top;border-right:1px solid var(--gray-100);color:var(--gray-700);line-height:1.45}
 td:last-child{border-right:none}
 .col-num{width:58px} .col-job{width:20%} .col-onsite{width:31%}
-.col-office{width:18%} .col-draw{width:9%} .col-status{width:80px} .col-price{width:88px}
+.col-office{width:18%} .col-draw{width:9%} .col-status{width:90px} .col-price{width:88px}
 
 .job-num{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--blue);text-decoration:none}
 .job-num:hover{text-decoration:underline}
 .job-addr{font-weight:600;font-size:12.5px;color:var(--gray-900)}
 .job-client{font-size:11px;color:var(--gray-400);margin-top:2px}
 
+/* ONSITE CELL */
 .onsite-td{background:var(--yellow) !important;border-left:3px solid var(--yellow-dark) !important}
-.onsite-text{font-size:12.5px;color:#78350F;font-weight:600;line-height:1.45}
-.no-onsite{color:var(--gray-300);font-style:italic}
-.office-text{font-size:12px;color:var(--gray-600);line-height:1.4}
-.draw-text{font-size:12px;color:var(--gray-600);line-height:1.4;font-family:'DM Mono',monospace}
-.price-text{font-size:12px;font-weight:600;color:#166534;font-family:'DM Mono',monospace;text-align:right;display:block}
+.onsite-wrap{display:flex;align-items:flex-start;gap:6px;min-height:20px}
+.onsite-text{font-size:12.5px;color:#78350F;font-weight:600;line-height:1.45;flex:1;cursor:pointer}
+.onsite-text:hover{text-decoration:underline}
+.no-onsite{color:#aaa;font-style:italic;font-size:12px;cursor:pointer;flex:1}
+.no-onsite:hover{color:#888}
+.edit-btn{flex-shrink:0;background:none;border:none;cursor:pointer;padding:2px 4px;color:#92400E;opacity:0;transition:opacity .15s;font-size:13px}
+.onsite-td:hover .edit-btn{opacity:1}
 
+/* INLINE EDITOR */
+.onsite-editor{display:none;width:100%}
+.onsite-editor textarea{width:100%;border:1.5px solid var(--blue);border-radius:5px;padding:6px 8px;font-size:12.5px;font-family:'DM Sans',sans-serif;color:#78350F;background:#FFFDE7;resize:vertical;min-height:52px;outline:none;font-weight:600}
+.editor-actions{display:flex;gap:6px;margin-top:5px}
+.btn-save-note{background:var(--blue);color:white;border:none;border-radius:5px;padding:4px 12px;font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:4px}
+.btn-save-note:hover{background:#1D4ED8}
+.btn-save-note.saving{opacity:.6;pointer-events:none}
+.btn-cancel-note{background:white;color:var(--gray-600);border:1px solid var(--gray-300);border-radius:5px;padding:4px 10px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-cancel-note:hover{background:var(--gray-50)}
+.save-status{font-size:11px;margin-top:3px;min-height:14px}
+.save-ok{color:#16A34A} .save-err{color:#DC2626}
+
+/* BADGES */
 .badge{display:inline-block;font-size:10px;font-weight:600;padding:2px 7px;border-radius:99px;border:1px solid}
 .b-approved{background:#FFF7ED;color:#C2410C;border-color:#FDBA74}
 .b-pending{background:#EFF6FF;color:#1D4ED8;border-color:#93C5FD}
 .b-created{background:#F3F4F6;color:#374151;border-color:#D1D5DB}
 .b-paid{background:#DCFCE7;color:#166534;border-color:#86EFAC}
-.empty-row td{text-align:center;padding:2.5rem;color:var(--gray-400);font-size:13px}
 
+.price-text{font-size:12px;font-weight:600;color:#166534;font-family:'DM Mono',monospace;text-align:right;display:block}
+.empty-row td{text-align:center;padding:2.5rem;color:var(--gray-400);font-size:13px}
 .footer{font-size:11px;color:var(--gray-400);margin-top:10px;padding-bottom:24px;display:flex;justify-content:space-between}
 .footer a{color:var(--blue);text-decoration:none}
 .footer a:hover{text-decoration:underline}
@@ -110,7 +122,7 @@ td:last-child{border-right:none}
   .topbar{padding:0 14px} .main{padding:14px}
   .col-office,.col-draw,.col-price{display:none}
   .col-onsite{width:45%} .col-job{width:30%}
-  .topbar .tb-title{font-size:13px} .sync-info{display:none}
+  .sync-info{display:none}
 }
 </style>
 </head>
@@ -119,7 +131,7 @@ td:last-child{border-right:none}
 <div class="topbar">
   <div class="topbar-left">
     <div class="logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     </div>
     <div>
       <div class="tb-title">Apex Texas Design &amp; Build</div>
@@ -150,10 +162,7 @@ td:last-child{border-right:none}
     <label>Organization ID</label>
     <input type="text" id="orgIdInput" value="22PMhckzhfrH">
     <button class="btn-save" onclick="saveAndLoad()">Save &amp; Load Jobs</button>
-    <div class="setup-hint">
-      Find your grant key in JobTread → Settings → API &amp; Integrations → Grant Keys.<br>
-      Each person saves their own key on their own device — it never leaves your browser.
-    </div>
+    <div class="setup-hint">Find your grant key in JobTread → Settings → API &amp; Integrations → Grant Keys.<br>Each person saves their own key once on their own device.</div>
   </div>
 </div>
 
@@ -183,7 +192,7 @@ td:last-child{border-right:none}
         <tr>
           <th class="col-num">Job #</th>
           <th class="col-job">Address &amp; Client</th>
-          <th class="col-onsite">⚠ On-Site Needs</th>
+          <th class="col-onsite">⚠ On-Site Needs <span style="font-weight:400;opacity:.6;font-size:10px">(click to edit)</span></th>
           <th class="col-office">Office Items</th>
           <th class="col-draw">Next Draw</th>
           <th class="col-status">Status</th>
@@ -201,37 +210,39 @@ td:last-child{border-right:none}
 
 <script>
 const DEFAULT_ORG = '22PMhckzhfrH';
+const ONSITE_FIELD_ID = '22PWVgQLM4kP'; // "On site needs" custom field
+
 const SHEET_DATA = [
-  {keys:['13101','indigo cove'],client:'David Davis',onsite:'Meet Alberto 6/3 – fix all engineering blunders',office:'',draw:'-remove gravel'},
-  {keys:['22220','briarcliff'],client:'Mike Brown',onsite:'Meeting client 9:30–11:30 6/5',office:'',draw:''},
-  {keys:['191 evelyn','evelyn ct'],client:'Matt Bango',onsite:'Done',office:'Review his financials to get paid for this job',draw:''},
-  {keys:['405 krebs'],client:'Joseph Olson',onsite:'New survey uploaded – call Ryan re: city website upload',office:'Look at change orders to see what we spent on this job',draw:''},
-  {keys:['18620','lakeland'],client:'Matt Daniel',onsite:'Do plumbing, invoiced for $3k',office:'',draw:''},
-  {keys:['3306','duval'],client:'Eric Starkloff',onsite:'Finish tile 6/3, needs to deposit money and needs schedule',office:'',draw:''},
-  {keys:['1810 belford'],client:'Heidi Schmalbach',onsite:'Reach back out June – estimate approval 6/22/2026',office:'',draw:''},
-  {keys:['1048','sunset canyon'],client:'Chris Zielinski',onsite:'Sent info to Shawn – Inactive',office:'',draw:''},
-  {keys:['795','heaton hollow'],client:'Mike Bates',onsite:'Deck stained, tile done, spread dirt over',office:'',draw:''},
-  {keys:['3100 garwood'],client:'Ryan Strickland',onsite:'Look to see if final completed',office:'',draw:''},
-  {keys:['413 live oak'],client:'Etienne Paris',onsite:'Remove channel drain off estimate, create custom mounts for Kach fence',office:'',draw:''},
-  {keys:['2604','pegram'],client:'Paul Mcginnis',onsite:'Add gravel in backyard and screw down electrical conduit',office:'Get gravel, install gravel on Friday',draw:''},
-  {keys:['1701','palma plaza'],client:'Kevin Capitani',onsite:'Pool is demod, need $3k – Zach + Justin to install steel Friday',office:'',draw:''},
-  {keys:['4406','avenue d'],client:'William McLeroy',onsite:'Build shower, waiting on guys to become available',office:'',draw:''},
-  {keys:['910 chote'],client:'Edward Cavada',onsite:'Waiting on payment for pool cleaning',office:'',draw:''},
-  {keys:['12901','perryton'],client:'Linda Eason',onsite:'Cinderblock being laid 5/19 – estimate for epoxy floor 10x20 and give samples',office:'yes 4/11/2026',draw:''},
-  {keys:['326 crestwood'],client:'Layne Kelly Homes',onsite:'Order steel plates for pool – Houston drop, pushed back due to weather TBD',office:'Set pool on the 27th, drive up next week',draw:''},
-  {keys:['4208','avenue f','ave f'],client:'Stewart Pisecco',onsite:'Finish lights and scrape front area, get sand for backyard',office:'yes 4/11/2026',draw:''},
-  {keys:['the range'],client:'',onsite:'Warranty repair 5/20/2026',office:'',draw:''},
-  {keys:['4607','tejas'],client:'Jeff Bradley',onsite:'Half of payment made $30k – start dig next week 6/8',office:'',draw:''},
-  {keys:['2810','faultline','horseshoe bay'],client:'Tyler Barcena',onsite:'Concrete piers scheduled for install at Javier',office:'',draw:''},
-  {keys:['3100 maple','waco'],client:'Dick Brunn',onsite:'Find the permit for electrical',office:'',draw:''},
-  {keys:['4810','avenue g','ave g'],client:'Lissa Cooke',onsite:'Start Thurs/Fri – Justin steel, guys install road base and gravel and post',office:'',draw:''},
-  {keys:['8406','basil hayden'],client:'Steven Conway',onsite:'Need to go back out to dig piers next week 6/8',office:'',draw:''},
-  {keys:['208','meadowlark'],client:'Greg Ettenson',onsite:'Back needs to be finished',office:'',draw:''},
-  {keys:['the park'],client:'',onsite:'Exterior done – focus on pool area, estimated start in June',office:'',draw:''},
-  {keys:['5117','quiet mountain'],client:'Gray Wolf Construction',onsite:'Keith going out 6/3 for electrical, transformer pad changes',office:'',draw:''},
-  {keys:['greenwood'],client:'Mike Broade',onsite:'',office:'',draw:''},
-  {keys:['4831','rollingwood'],client:'David Thomas',onsite:'Review estimate response',office:'',draw:''},
-  {keys:['wells branch'],client:'',onsite:'Park at Wells Branch – compliance remediation in progress',office:'',draw:''},
+  {keys:['13101','indigo cove'],client:'David Davis',office:'',draw:'-remove gravel'},
+  {keys:['22220','briarcliff'],client:'Mike Brown',office:'',draw:''},
+  {keys:['191 evelyn','evelyn ct'],client:'Matt Bango',office:'Review his financials to get paid for this job',draw:''},
+  {keys:['405 krebs'],client:'Joseph Olson',office:'Look at change orders to see what we spent on this job',draw:''},
+  {keys:['18620','lakeland'],client:'Matt Daniel',office:'',draw:''},
+  {keys:['3306','duval'],client:'Eric Starkloff',office:'',draw:''},
+  {keys:['1810 belford'],client:'Heidi Schmalbach',office:'',draw:''},
+  {keys:['1048','sunset canyon'],client:'Chris Zielinski',office:'',draw:''},
+  {keys:['795','heaton hollow'],client:'Mike Bates',office:'',draw:''},
+  {keys:['3100 garwood'],client:'Ryan Strickland',office:'',draw:''},
+  {keys:['413 live oak'],client:'Etienne Paris',office:'',draw:''},
+  {keys:['2604','pegram'],client:'Paul Mcginnis',office:'Get gravel, install gravel on Friday',draw:''},
+  {keys:['1701','palma plaza'],client:'Kevin Capitani',office:'',draw:''},
+  {keys:['4406','avenue d'],client:'William McLeroy',office:'',draw:''},
+  {keys:['910 chote'],client:'Edward Cavada',office:'',draw:''},
+  {keys:['12901','perryton'],client:'Linda Eason',office:'yes 4/11/2026',draw:''},
+  {keys:['326 crestwood'],client:'Layne Kelly Homes',office:'Set pool on the 27th, drive up next week',draw:''},
+  {keys:['4208','avenue f','ave f'],client:'Stewart Pisecco',office:'yes 4/11/2026',draw:''},
+  {keys:['the range'],client:'',office:'',draw:''},
+  {keys:['4607','tejas'],client:'Jeff Bradley',office:'',draw:''},
+  {keys:['2810','faultline','horseshoe bay'],client:'Tyler Barcena',office:'',draw:''},
+  {keys:['3100 maple','waco'],client:'Dick Brunn',office:'',draw:''},
+  {keys:['4810','avenue g','ave g'],client:'Lissa Cooke',office:'',draw:''},
+  {keys:['8406','basil hayden'],client:'Steven Conway',office:'',draw:''},
+  {keys:['208','meadowlark'],client:'Greg Ettenson',office:'',draw:''},
+  {keys:['the park'],client:'',office:'',draw:''},
+  {keys:['5117','quiet mountain'],client:'Gray Wolf Construction',office:'',draw:''},
+  {keys:['greenwood'],client:'Mike Broade',office:'',draw:''},
+  {keys:['4831','rollingwood'],client:'David Thomas',office:'',draw:''},
+  {keys:['wells branch'],client:'',office:'',draw:''},
 ];
 
 let allJobs = [];
@@ -239,9 +250,7 @@ let allJobs = [];
 function matchSheet(addr) {
   const a = (addr||'').toLowerCase();
   for (const row of SHEET_DATA) {
-    for (const k of row.keys) {
-      if (a.includes(k.toLowerCase())) return row;
-    }
+    for (const k of row.keys) { if (a.includes(k.toLowerCase())) return row; }
   }
   return null;
 }
@@ -252,187 +261,240 @@ function getOrg() { return localStorage.getItem('jt_org_id') || DEFAULT_ORG; }
 function showSetup() {
   document.getElementById('setupScreen').style.display = 'block';
   document.getElementById('mainScreen').style.display = 'none';
-  const k = getKey();
-  if (k) document.getElementById('grantKeyInput').value = k;
+  const k = getKey(); if (k) document.getElementById('grantKeyInput').value = k;
   document.getElementById('orgIdInput').value = getOrg();
 }
-
-function showErr(msg) {
-  const el = document.getElementById('setupErr');
-  el.textContent = msg; el.style.display = 'block';
-}
-
+function showErr(msg) { const el=document.getElementById('setupErr'); el.textContent=msg; el.style.display='block'; }
 function saveAndLoad() {
-  const key = document.getElementById('grantKeyInput').value.trim();
-  const org = document.getElementById('orgIdInput').value.trim();
+  const key=document.getElementById('grantKeyInput').value.trim();
+  const org=document.getElementById('orgIdInput').value.trim();
   if (!key) { showErr('Please enter your grant key.'); return; }
   localStorage.setItem('jt_grant_key', key);
   localStorage.setItem('jt_org_id', org);
-  document.getElementById('setupScreen').style.display = 'none';
+  document.getElementById('setupScreen').style.display='none';
   fetchJobs();
 }
 
-async function fetchJobs() {
-  const key = getKey();
-  if (!key) { showSetup(); return; }
+async function pave(query) {
+  const res = await fetch('https://api.jobtread.com/pave', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: { $: { grantKey: getKey() }, ...query } })
+  });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  return res.json();
+}
 
+async function fetchJobs() {
+  const key = getKey(); if (!key) { showSetup(); return; }
   const btn = document.getElementById('refreshBtn');
   btn.classList.add('loading');
-
-  // JobTread Pave API — grantKey goes inside the query object
-  const body = {
-    query: {
-      $: { grantKey: key },
+  try {
+    const data = await pave({
       organization: {
         $: { id: getOrg() },
         jobs: {
-          $: {
-            size: 50,
-            sortBy: [{ field: 'number', order: 'desc' }],
-            where: ['closedOn', null]
-          },
+          $: { size: 50, sortBy: [{ field: 'number', order: 'desc' }], where: ['closedOn', null] },
           nodes: {
-            id: {},
-            number: {},
-            status: {},
-            projectedPrice: {},
-            projectedCost: {},
-            location: { address: {} }
+            id: {}, number: {}, status: {},
+            projectedPrice: {}, projectedCost: {},
+            location: { address: {} },
+            customFieldValues: {
+              nodes: {
+                id: {},
+                value: {},
+                customField: { id: {}, name: {} }
+              }
+            }
           }
         }
       }
-    }
-  };
-
-  try {
-    const res = await fetch('https://api.jobtread.com/pave', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
     });
 
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-
-    // Log full response to console for debugging
-    console.log('JobTread response:', JSON.stringify(data, null, 2));
-
-    // Handle both response shapes: data.query.organization and data.organization
     const org = data?.query?.organization || data?.organization;
-    if (!org) throw new Error('No organization in response. Check console for details.');
-
+    if (!org) throw new Error('No organization in response');
     const nodes = org?.jobs?.nodes;
-    if (!nodes) throw new Error('No jobs found in response.');
+    if (!nodes) throw new Error('No jobs found');
 
-    allJobs = nodes.map(j => ({
-      id: j.id,
-      num: j.number,
-      addr: j.location?.address || '',
-      status: j.status,
-      price: j.projectedPrice,
-      cost: j.projectedCost,
-    }));
+    allJobs = nodes.map(j => {
+      const onsiteField = (j.customFieldValues?.nodes || []).find(f => f.customField?.id === ONSITE_FIELD_ID);
+      return {
+        id: j.id,
+        num: j.number,
+        addr: j.location?.address || '',
+        status: j.status,
+        price: j.projectedPrice,
+        onsite: onsiteField?.value || '',
+        onsiteFieldValueId: onsiteField?.id || null,
+      };
+    });
 
     const now = new Date();
-    const ts = now.toLocaleDateString('en-US',{month:'short',day:'numeric'}) + ' ' +
-               now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
-    document.getElementById('syncInfo').textContent = 'Synced ' + ts;
-    document.getElementById('footerSync').textContent = 'Last synced: ' + ts;
-
+    const ts = now.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' '+now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+    document.getElementById('syncInfo').textContent = 'Synced '+ts;
+    document.getElementById('footerSync').textContent = 'Last synced: '+ts;
     document.getElementById('mainScreen').style.display = 'block';
     document.getElementById('setupScreen').style.display = 'none';
-    updateStats();
-    renderTable();
-
+    updateStats(); renderTable();
   } catch(e) {
-    const msg = e.message || '';
-    if (msg.includes('401') || msg.toLowerCase().includes('grant') || msg.toLowerCase().includes('auth')) {
-      localStorage.removeItem('jt_grant_key');
-      showSetup();
-      showErr('Invalid grant key — please re-enter.');
-    } else {
-      alert('Error loading jobs: ' + msg + '\n\nOpen browser console (F12) for details.');
-    }
+    if (e.message.includes('401')||e.message.toLowerCase().includes('grant')) { localStorage.removeItem('jt_grant_key'); showSetup(); showErr('Invalid grant key.'); }
+    else alert('Error loading jobs: '+e.message);
   }
-
   btn.classList.remove('loading');
 }
 
-function updateStats() {
-  const approved = allJobs.filter(j=>j.status==='approved').length;
-  const pending  = allJobs.filter(j=>j.status==='pending').length;
-  const created  = allJobs.filter(j=>j.status==='created').length;
-  const total    = allJobs.reduce((s,j)=>s+(j.price||0),0);
-  document.getElementById('sTotal').textContent    = allJobs.length;
-  document.getElementById('sApproved').textContent = approved;
-  document.getElementById('sPending').textContent  = pending;
-  document.getElementById('sCreated').textContent  = created;
-  document.getElementById('sValue').textContent    = total > 0 ? '$'+Math.round(total/1000)+'k' : '—';
+async function saveOnsite(jobId, newValue, fieldValueId, rowIndex) {
+  const statusEl = document.getElementById('save-status-'+rowIndex);
+  const saveBtn  = document.getElementById('save-btn-'+rowIndex);
+  saveBtn.classList.add('saving');
+  statusEl.textContent = 'Saving...';
+  statusEl.className = 'save-status';
+
+  try {
+    // If fieldValueId exists, update it; otherwise create it
+    let mutation;
+    if (fieldValueId) {
+      mutation = {
+        updateCustomFieldValue: {
+          $: { id: fieldValueId, value: newValue },
+          id: {}
+        }
+      };
+    } else {
+      mutation = {
+        createCustomFieldValue: {
+          $: { jobId: jobId, customFieldId: ONSITE_FIELD_ID, value: newValue },
+          id: {}
+        }
+      };
+    }
+
+    const res = await fetch('https://api.jobtread.com/pave', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: { $: { grantKey: getKey() }, ...mutation } })
+    });
+    const data = await res.json();
+    if (data.errors) throw new Error(data.errors[0]?.message || 'Save failed');
+
+    // Update local data
+    allJobs[rowIndex].onsite = newValue;
+    const newId = data?.query?.updateCustomFieldValue?.id || data?.query?.createCustomFieldValue?.id;
+    if (newId) allJobs[rowIndex].onsiteFieldValueId = newId;
+
+    statusEl.textContent = '✓ Saved to JobTread';
+    statusEl.className = 'save-status save-ok';
+    // Update display text
+    const displayEl = document.getElementById('onsite-display-'+rowIndex);
+    if (displayEl) {
+      displayEl.className = newValue ? 'onsite-text' : 'no-onsite';
+      displayEl.textContent = newValue || 'Click to add on-site needs...';
+    }
+    setTimeout(() => { statusEl.textContent = ''; closeEditor(rowIndex); }, 1200);
+  } catch(e) {
+    statusEl.textContent = '✗ Error: '+e.message;
+    statusEl.className = 'save-status save-err';
+  }
+  saveBtn.classList.remove('saving');
+}
+
+function openEditor(rowIndex) {
+  document.getElementById('onsite-view-'+rowIndex).style.display = 'none';
+  document.getElementById('onsite-editor-'+rowIndex).style.display = 'block';
+  const ta = document.getElementById('onsite-ta-'+rowIndex);
+  ta.focus(); ta.selectionStart = ta.selectionEnd = ta.value.length;
+}
+function closeEditor(rowIndex) {
+  document.getElementById('onsite-view-'+rowIndex).style.display = 'flex';
+  document.getElementById('onsite-editor-'+rowIndex).style.display = 'none';
 }
 
 const STATUS_LABELS = {
-  created:  { label: 'Lead',        cls: 'b-created'  },
-  pending:  { label: 'Estimating',  cls: 'b-pending'  },
-  approved: { label: 'Construction',cls: 'b-approved' },
-  paid:     { label: 'Completed',   cls: 'b-paid'     },
+  created:  { label:'Lead',         cls:'b-created'  },
+  pending:  { label:'Estimating',   cls:'b-pending'  },
+  approved: { label:'Construction', cls:'b-approved' },
+  paid:     { label:'Completed',    cls:'b-paid'     },
 };
-function badge(s) {
-  const st = STATUS_LABELS[s] || { label: s, cls: 'b-created' };
-  return `<span class="badge ${st.cls}">${st.label}</span>`;
+function badge(s) { const st=STATUS_LABELS[s]||{label:s,cls:'b-created'}; return `<span class="badge ${st.cls}">${st.label}</span>`; }
+function fmt(n)   { return n ? '$'+Math.round(n).toLocaleString() : '—'; }
+
+function updateStats() {
+  document.getElementById('sTotal').textContent    = allJobs.length;
+  document.getElementById('sApproved').textContent = allJobs.filter(j=>j.status==='approved').length;
+  document.getElementById('sPending').textContent  = allJobs.filter(j=>j.status==='pending').length;
+  document.getElementById('sCreated').textContent  = allJobs.filter(j=>j.status==='created').length;
+  const total = allJobs.reduce((s,j)=>s+(j.price||0),0);
+  document.getElementById('sValue').textContent = total>0 ? '$'+Math.round(total/1000)+'k' : '—';
 }
-function fmt(n) { return n ? '$'+Math.round(n).toLocaleString() : '—'; }
 
 function renderTable() {
   const q  = (document.getElementById('searchInput').value||'').toLowerCase();
   const sf = document.getElementById('statusFilter').value;
-  const filtered = allJobs.filter(j => {
-    const a = (j.addr||'').toLowerCase();
-    const sh = matchSheet(j.addr);
-    const client = sh ? (sh.client||'').toLowerCase() : '';
-    return (!q || a.includes(q) || j.num.includes(q) || client.includes(q)) &&
-           (!sf || j.status === sf);
+  const filtered = allJobs.map((j,i)=>({...j,_i:i})).filter(j => {
+    const a=(j.addr||'').toLowerCase();
+    const sh=matchSheet(j.addr); const client=sh?(sh.client||'').toLowerCase():'';
+    return (!q||a.includes(q)||j.num.includes(q)||client.includes(q)) && (!sf||j.status===sf);
   });
-
-  document.getElementById('countTag').textContent = filtered.length + ' of ' + allJobs.length + ' jobs';
-
+  document.getElementById('countTag').textContent = filtered.length+' of '+allJobs.length+' jobs';
   const tb = document.getElementById('tableBody');
-  if (!filtered.length) {
-    tb.innerHTML = '<tr class="empty-row"><td colspan="7">No jobs match your search.</td></tr>';
-    return;
-  }
+  if (!filtered.length) { tb.innerHTML='<tr class="empty-row"><td colspan="7">No jobs match.</td></tr>'; return; }
 
   tb.innerHTML = filtered.map(j => {
-    const sh     = matchSheet(j.addr);
-    const onsite = sh ? (sh.onsite||'') : '';
-    const office = sh ? (sh.office||'') : '';
-    const draw   = sh ? (sh.draw||'')   : '';
-    const client = sh ? (sh.client||'') : '';
+    const i    = j._i;
+    const sh   = matchSheet(j.addr);
+    const office = sh?(sh.office||''):'';
+    const draw   = sh?(sh.draw||''):'';
+    const client = sh?(sh.client||''):'';
     const addr   = j.addr.split(',').slice(0,2).join(', ');
-    const url    = 'https://app.jobtread.com/jobs/' + j.id;
+    const url    = 'https://app.jobtread.com/jobs/'+j.id;
+    const hasOnsite = !!j.onsite;
+
     return `<tr>
       <td class="col-num"><a class="job-num" href="${url}" target="_blank">#${j.num}</a></td>
       <td class="col-job">
         <div class="job-addr">${addr}</div>
-        ${client ? `<div class="job-client">${client}</div>` : ''}
+        ${client?`<div class="job-client">${client}</div>`:''}
       </td>
-      <td class="col-onsite${onsite?' onsite-td':''}">
-        ${onsite ? `<span class="onsite-text">${onsite}</span>` : '<span class="no-onsite">—</span>'}
+      <td class="col-onsite onsite-td">
+        <div id="onsite-view-${i}" class="onsite-wrap" style="display:flex">
+          <span id="onsite-display-${i}" class="${hasOnsite?'onsite-text':'no-onsite'}" onclick="openEditor(${i})">${j.onsite||'Click to add on-site needs...'}</span>
+          <button class="edit-btn" onclick="openEditor(${i})" title="Edit">✏️</button>
+        </div>
+        <div id="onsite-editor-${i}" class="onsite-editor">
+          <textarea id="onsite-ta-${i}" rows="3">${j.onsite||''}</textarea>
+          <div class="editor-actions">
+            <button id="save-btn-${i}" class="btn-save-note" onclick="saveOnsite('${j.id}','${encodeURIComponent('__ta__'+i)}','${j.onsiteFieldValueId||''}',${i})">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              Save to JobTread
+            </button>
+            <button class="btn-cancel-note" onclick="closeEditor(${i})">Cancel</button>
+          </div>
+          <div id="save-status-${i}" class="save-status"></div>
+        </div>
       </td>
-      <td class="col-office"><span class="office-text">${office}</span></td>
-      <td class="col-draw"><span class="draw-text">${draw}</span></td>
+      <td class="col-office" style="font-size:12px;color:var(--gray-600)">${office}</td>
+      <td class="col-draw" style="font-size:12px;color:var(--gray-600);font-family:'DM Mono',monospace">${draw}</td>
       <td class="col-status">${badge(j.status)}</td>
       <td class="col-price"><span class="price-text">${fmt(j.price)}</span></td>
     </tr>`;
   }).join('');
+
+  // Override save buttons to read from textarea value at click time
+  filtered.forEach(j => {
+    const i = j._i;
+    const btn = document.getElementById('save-btn-'+i);
+    if (btn) {
+      btn.onclick = () => {
+        const val = document.getElementById('onsite-ta-'+i).value.trim();
+        saveOnsite(j.id, val, j.onsiteFieldValueId, i);
+      };
+    }
+  });
 }
 
 // Init
-if (getKey()) {
-  document.getElementById('mainScreen').style.display = 'block';
-  fetchJobs();
-} else {
-  showSetup();
-}
+if (getKey()) { document.getElementById('mainScreen').style.display='block'; fetchJobs(); }
+else showSetup();
 </script>
 </body>
 </html>
