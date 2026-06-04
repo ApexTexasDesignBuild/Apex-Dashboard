@@ -372,14 +372,14 @@ async function saveOnsite(jobId, newValue, fieldValueId, rowIndex) {
     const res = await fetch('https://api.jobtread.com/pave', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query: { $: { grantKey: getKey() }, ...mutation } })
+      body: JSON.stringify({ mutation: { $: { grantKey: getKey() }, ...mutation } })
     });
     const data = await res.json();
     if (data.errors) throw new Error(data.errors[0]?.message || 'Save failed');
 
     // Update local data
     allJobs[rowIndex].onsite = newValue;
-    const newId = data?.query?.updateCustomFieldValue?.id || data?.query?.createCustomFieldValue?.id;
+    const newId = data?.mutation?.updateCustomFieldValue?.id || data?.mutation?.createCustomFieldValue?.id;
     if (newId) allJobs[rowIndex].onsiteFieldValueId = newId;
 
     statusEl.textContent = '✓ Saved to JobTread';
